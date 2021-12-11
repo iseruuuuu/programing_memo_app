@@ -52,7 +52,7 @@ class ListItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    memo.appName,
+                    memo.languageName,
                     maxLines: 15,
                     style: const TextStyle(
                       color: Colors.grey,

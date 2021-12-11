@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/app_title.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 
 import '../../memo/memo.dart';
@@ -8,14 +7,12 @@ import 'memo_widget_controller.dart';
 
 class MemoWidget extends StatelessWidget {
   const MemoWidget({
-    Key key,
-    this.memo,
-    this.controller,
-    this.onTap,
+    Key? key,
+    required this.memo,
+    required this.onTap,
   }) : super(key: key);
 
   final Memo memo;
-  final TextEditingController controller;
   final Function() onTap;
 
   @override

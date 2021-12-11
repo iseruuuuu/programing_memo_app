@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 
 @immutable
@@ -13,22 +12,22 @@ class Memo {
   final String day;
 
   Memo({
-    this.appName,
-    this.languageName,
-    this.designUrlName,
-    this.linkUrlName,
-    this.memo,
-    this.day,
+    required this.appName,
+    required this.languageName,
+    required this.designUrlName,
+    required this.linkUrlName,
+    required this.memo,
+    required this.day,
   }) : id = DateTime.now().millisecondsSinceEpoch.toString();
 
   const Memo.withId({
-    this.id,
-    this.appName,
-    this.languageName,
-    this.designUrlName,
-    this.linkUrlName,
-    this.memo,
-    this.day,
+    required this.id,
+    required this.appName,
+    required this.languageName,
+    required this.designUrlName,
+    required this.linkUrlName,
+    required this.memo,
+    required this.day,
   });
 
   static const initialTodos = [
@@ -61,22 +60,30 @@ class Memo {
   ];
 
   Memo copyWith({
-    String id,
-    String appName,
-    String languageName,
-    String designUrlName,
-    String linkUrlName,
-    String memo,
-    String day,
+    required String id,
+    required String appName,
+    required String languageName,
+    required String designUrlName,
+    required String linkUrlName,
+    required String memo,
+    required String day,
   }) {
     return Memo.withId(
-      id: id ?? this.id,
-      appName: appName ?? this.appName,
-      languageName: languageName ?? this.languageName,
-      designUrlName: designUrlName ?? this.designUrlName,
-      linkUrlName: linkUrlName ?? this.linkUrlName,
-      memo: memo ?? this.memo,
-      day: day ?? this.day,
+      // id: id ?? this.id,
+      // appName: appName ?? this.appName,
+      // languageName: languageName ?? this.languageName,
+      // designUrlName: designUrlName ?? this.designUrlName,
+      // linkUrlName: linkUrlName ?? this.linkUrlName,
+      // memo: memo ?? this.memo,
+      // day: day ?? this.day,
+
+      id: id,
+      appName: appName,
+      languageName: languageName,
+      designUrlName: designUrlName,
+      linkUrlName: linkUrlName,
+      memo: memo,
+      day: day,
     );
   }
 

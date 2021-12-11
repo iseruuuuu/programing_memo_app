@@ -3,10 +3,10 @@ import '../memo/memo.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({
-    Key key,
-    this.index,
-    this.memo,
-    this.selectedIndex,
+    Key? key,
+    required this.index,
+    required this.memo,
+    required this.selectedIndex,
   }) : super(key: key);
 
   final int index;
@@ -34,7 +34,7 @@ class ListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                (memo.languageName == '' )
+                (memo.languageName == '')
                     ? '新規メモ'
                     : memo.appName,
                 textAlign: TextAlign.start,
@@ -65,7 +65,7 @@ class ListItem extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

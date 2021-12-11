@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/list_item.dart';
 import 'package:programming_note_app/component/memo_widget/memo_widget.dart';
-import '../../memo/memo.dart';
 import 'home_screen_controller.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
-    Key key,
-    this.memo,
+    Key? key,
   }) : super(key: key);
-
-  final Memo memo;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +31,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: Obx(() => ListView.builder(
+              child: Obx(
+                () => ListView.builder(
                   itemCount: memos.length,
                   itemBuilder: (BuildContext context, int index) {
                     final memoItem = memos[index];
@@ -57,6 +54,7 @@ class HomeScreen extends StatelessWidget {
               child: Obx(
                 () => MemoWidget(
                   memo: memos[controller.selectedIndex.value],
+                  onTap: () {},
                 ),
               ),
             ),

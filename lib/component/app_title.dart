@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppTitle extends StatelessWidget {
   const AppTitle({
-    Key key,
-    this.title,
+    Key? key,
+    required this.title,
   }) : super(key: key);
 
   final String title;

@@ -23,8 +23,9 @@ class ListItem extends StatelessWidget {
             color: const Color(0xFFFFFFFF),
             width: 2,
           ),
-          color:
-              (index == selectedIndex) ? const Color(0xFFFFE080) : const Color(0xFFFFFFFF),
+          color: (index == selectedIndex)
+              ? const Color(0xFFFFE080)
+              : const Color(0xFFFFFFFF),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(

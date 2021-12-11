@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/list_item.dart';
 import 'package:programming_note_app/component/memo_widget.dart';
+import '../../memo/memo.dart';
+import 'home_screen_controller.dart';
+import 'package:get/get.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key key, this.title}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({
+    Key key,
+    this.memo,
+  }) : super(key: key);
 
-  final String title;
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final Memo memo;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomeScreenController(), tag: '');
+    final memos = controller.memos;
     return Scaffold(
       body: Center(
         child: Row(
@@ -29,19 +24,21 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 1,
               child: ListView.builder(
+                itemCount: memos.length,
                 itemBuilder: (BuildContext context, int index) {
+                  final memoItem = memos[index];
                   return ListItem(
-                    title: 'ああ',
-                    day: '12/$index',
-                    content: '楽しいメモだよおお',
                     index: index,
+                    memo: memoItem,
                   );
                 },
               ),
             ),
-            const Expanded(
+            Expanded(
               flex: 3,
-              child: MemoWidget(),
+              child: MemoWidget(
+                memo: memos[0],
+              ),
             ),
           ],
         ),

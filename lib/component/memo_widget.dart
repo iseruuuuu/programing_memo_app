@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/app_title.dart';
 
+import '../memo/memo.dart';
+
 class MemoWidget extends StatelessWidget {
-  const MemoWidget({Key key}) : super(key: key);
+  const MemoWidget({
+    Key key,
+    this.memo,
+    this.controller,
+  }) : super(key: key);
+
+  final Memo memo;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +23,20 @@ class MemoWidget extends StatelessWidget {
           const AppTitle(
             title: 'アプリ名',
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 3, horizontal: 30),
-            child: TextField(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
+            child: TextField(
+              controller: TextEditingController(text: memo.appName),
+            ),
           ),
           const AppTitle(
             title: '開発言語',
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 3, horizontal: 30),
-            child: TextField(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
+            child: TextField(
+              controller: TextEditingController(text: memo.languageName),
+            ),
           ),
           Row(
             children: [
@@ -39,9 +52,11 @@ class MemoWidget extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 3, horizontal: 30),
-            child: TextField(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
+            child: TextField(
+              controller: TextEditingController(text: memo.designUrlName),
+            ),
           ),
           Row(
             children: [
@@ -57,9 +72,11 @@ class MemoWidget extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 3, horizontal: 30),
-            child: TextField(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
+            child: TextField(
+              controller: TextEditingController(text: memo.linkUrlName),
+            ),
           ),
           const AppTitle(
             title: 'メモ',
@@ -70,12 +87,13 @@ class MemoWidget extends StatelessWidget {
               width: double.infinity,
               height: 500,
               color: Colors.blueGrey,
-              child: const Padding(
-                padding: EdgeInsets.all(20.0),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
                 child: TextField(
+                  controller: TextEditingController(text: memo.memo),
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
                 ),

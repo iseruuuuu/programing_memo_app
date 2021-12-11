@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../memo/memo.dart';
+
 class ListItem extends StatelessWidget {
   const ListItem({
     Key key,
-    this.title,
-    this.day,
-    this.content,
     this.index,
+    this.memo,
   }) : super(key: key);
 
-  final String title;
-  final String day;
-  final String content;
   final int index;
+  final Memo memo;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,8 @@ class ListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title,
+                //title,
+                memo.appName,
                 textAlign: TextAlign.start,
                 style: const TextStyle(
                   fontSize: 15,
@@ -45,7 +44,7 @@ class ListItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    day,
+                    memo.day,
                     style: const TextStyle(
                       fontSize: 13,
                       color: Color(0xFF2E2817),
@@ -53,7 +52,8 @@ class ListItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    content,
+                    memo.appName,
+                    //content,
                     maxLines: 15,
                     style: const TextStyle(
                       color: Colors.grey,

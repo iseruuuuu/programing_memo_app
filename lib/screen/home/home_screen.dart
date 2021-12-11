@@ -19,8 +19,8 @@ class HomeScreen extends StatelessWidget {
     final memos = controller.memos;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 20,
+        backgroundColor: Colors.green,
+        elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.drive_file_rename_outline,

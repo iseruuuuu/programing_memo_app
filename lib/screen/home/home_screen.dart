@@ -18,6 +18,18 @@ class HomeScreen extends StatelessWidget {
     final controller = Get.put(HomeScreenController(), tag: '');
     final memos = controller.memos;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 20,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.drive_file_rename_outline,
+            color: Colors.black,
+          ),
+          //TODO メモを追加できるようにしたい。
+          onPressed: controller.onTapAddMemo,
+        ),
+      ),
       body: Center(
         child: Row(
           children: [
@@ -30,7 +42,9 @@ class HomeScreen extends StatelessWidget {
                   return GestureDetector(
                     onTap: () => controller.onTap(index),
                     child: ListItem(
-                      index: index,
+                      //TODO 押したもののみ色を変えたい。
+                      index: controller.selectedIndex.value,
+                      selectedIndex: controller.selectedIndex.value,
                       memo: memoItem,
                     ),
                   );

@@ -6,10 +6,12 @@ class ListItem extends StatelessWidget {
     Key key,
     this.index,
     this.memo,
+    this.selectedIndex,
   }) : super(key: key);
 
   final int index;
   final Memo memo;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class ListItem extends StatelessWidget {
             width: 2,
           ),
           color:
-              (index == 0) ? const Color(0xFFFFE080) : const Color(0xFFFFFFFF),
+              (index == selectedIndex) ? const Color(0xFFFFE080) : const Color(0xFFFFFFFF),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(

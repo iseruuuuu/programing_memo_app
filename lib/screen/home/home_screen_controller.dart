@@ -30,15 +30,16 @@ class HomeScreenController extends GetxController {
     memos.add(todo);
   }
 
+  void onTapAddMemo() {
+
+  }
+
   // 指定タスクを削除
   void remove(Memo memo) {
     memos.remove(memo); // 等価性overrideしたのでOK
   }
 
   void onTap(int index) {
-    print(index);
     selectedIndex.value = index;
-    print(selectedIndex.value);
   }
-
 }

@@ -13,6 +13,8 @@ class MemoWidget extends StatelessWidget {
   final Memo memo;
   final TextEditingController controller;
 
+  //TODO 変更した時にリストとかも変わるようにする。
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -27,6 +29,10 @@ class MemoWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.appName),
+              onChanged: (text) {
+                memo.appName == text;
+                print(text);
+              },
             ),
           ),
           const AppTitle(

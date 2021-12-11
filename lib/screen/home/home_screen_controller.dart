@@ -13,21 +13,14 @@ class HomeScreenController extends GetxController {
     memos.addAll(Memo.initialTodos);
   }
 
-  List<Memo> get todos => memos; // TODO:フィルタの状態によって返すTodoを変える
+  List<Memo> get todos => memos;
 
-  // IDからTodoを取得
   Memo getTodoById(String id) {
     try {
       return memos.singleWhere((e) => e.id == id);
     } on StateError {
       return null; // 該当IDがなければnullを返す
     }
-  }
-
-  // Todo新規作成
-  void addTodo(String description) {
-    final todo = Memo(appName: 'あああ');
-    memos.add(todo);
   }
 
   void onTapAddMemo() {
@@ -46,9 +39,9 @@ class HomeScreenController extends GetxController {
     memos.add(todo);
   }
 
-  // 指定タスクを削除
+  //TODO backキーを打ったら消せるようにする。
   void remove(Memo memo) {
-    memos.remove(memo); // 等価性overrideしたのでOK
+    memos.remove(memo);
   }
 
   void onTap(int index) {

@@ -1,17 +1,10 @@
-import 'dart:convert';
-
-import 'package:programming_note_app/preference/preference.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../../memo/memo.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
 import '../../preference/storage_service/storeage_service.dart';
 
 class HomeScreenController extends GetxController {
   final selectedIndex = 0.obs;
-
   final memos = <Memo>[].obs;
   final _storage = TodoStorage();
   late final Worker _worker;
@@ -19,15 +12,15 @@ class HomeScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    final storageTodos =
+    final storageMemos =
         _storage.load()?.map((json) => Memo.fromJson(json)).toList();
     // SharedPreferencesにデータがなければダミー初期データをロード
-    final initialTodos = storageTodos ?? Memo.initialTodos;
-    _memos.addAll(initialTodos);
+    final initialMemos = storageMemos ?? Memo.initialTodos;
+    _memos.addAll(initialMemos);
 
     // _todosに変化がある度にストレージに保存
-    _worker = ever<List<Memo>>(memos, (todos) {
-      final data = todos.map((e) => e.toJson()).toList();
+    _worker = ever<List<Memo>>(memos, (memos) {
+      final data = memos.map((e) => e.toJson()).toList();
       _storage.save(data);
     });
   }
@@ -45,7 +38,7 @@ class HomeScreenController extends GetxController {
     DateFormat outputFormat = DateFormat('MM/dd');
     String date = outputFormat.format(now);
 
-    final todo = Memo(
+    final memo = Memo(
       appName: '',
       languageName: '',
       linkUrlName: ' ',
@@ -53,7 +46,7 @@ class HomeScreenController extends GetxController {
       memo: '',
       day: date,
     );
-    memos.add(todo);
+    memos.add(memo);
   }
 
   //TODO backキーを打ったら消せるようにする。

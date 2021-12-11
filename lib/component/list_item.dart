@@ -34,7 +34,9 @@ class ListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                (memo.languageName == '') ? '新規メモ' : memo.appName,
+                (memo.languageName == '')
+                    ? '新規メモ'
+                    : memo.appName,
                 textAlign: TextAlign.start,
                 style: const TextStyle(
                   fontSize: 15,
@@ -53,7 +55,9 @@ class ListItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    (memo.languageName == '') ? '追加テキストなし' : memo.languageName,
+                    (memo.languageName == '')
+                        ? '追加テキストなし'
+                        : memo.languageName,
                     maxLines: 15,
                     style: const TextStyle(
                       color: Colors.grey,
@@ -61,7 +65,7 @@ class ListItem extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

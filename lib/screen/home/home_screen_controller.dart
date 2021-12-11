@@ -1,3 +1,5 @@
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../memo/memo.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -13,7 +15,7 @@ class HomeScreenController extends GetxController {
     memos.addAll(Memo.initialTodos);
   }
 
-  List<Memo> get todos => memos;
+  List<Memo> get _memos => memos;
 
   Memo getTodoById(String id) {
     try {

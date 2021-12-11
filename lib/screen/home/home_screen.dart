@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/list_item.dart';
-import 'package:programming_note_app/component/memo_widget.dart';
+import 'package:programming_note_app/component/memo_widget/memo_widget.dart';
 import '../../memo/memo.dart';
 import 'home_screen_controller.dart';
 import 'package:get/get.dart';

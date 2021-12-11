@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/app_title.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:get/get.dart';
 
-import '../memo/memo.dart';
+import '../../memo/memo.dart';
+import 'memo_widget_controller.dart';
 
 class MemoWidget extends StatelessWidget {
   const MemoWidget({
     Key key,
     this.memo,
     this.controller,
+    this.onTap,
   }) : super(key: key);
 
   final Memo memo;
   final TextEditingController controller;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(MemoWidgetController(), tag: '');
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +58,7 @@ class MemoWidget extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => controller.onTapLink(memo.linkUrlName),
                 child: const Text('リンク'),
               ),
             ],
@@ -72,7 +78,7 @@ class MemoWidget extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => controller.onTapLink(memo.linkUrlName),
                 child: const Text('リンク'),
               ),
             ],

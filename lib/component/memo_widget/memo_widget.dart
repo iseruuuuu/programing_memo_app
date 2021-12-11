@@ -98,7 +98,7 @@ class MemoWidget extends StatelessWidget {
             child: Container(
               width: double.infinity,
               height: 500,
-              color: Colors.blueGrey,
+              color: Colors.black12,
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: TextField(

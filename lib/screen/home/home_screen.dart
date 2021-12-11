@@ -35,20 +35,21 @@ class HomeScreen extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: ListView.builder(
-                itemCount: memos.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final memoItem = memos[index];
-                  return GestureDetector(
-                    onTap: () => controller.onTap(index),
-                    child: ListItem(
-                      //TODO 押したもののみ色を変えたい。
-                      index: controller.selectedIndex.value,
-                      selectedIndex: controller.selectedIndex.value,
-                      memo: memoItem,
-                    ),
-                  );
-                },
+              child: Obx(() => ListView.builder(
+                  itemCount: memos.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final memoItem = memos[index];
+                    return GestureDetector(
+                      onTap: () => controller.onTap(index),
+                      child: ListItem(
+                        //TODO 押したもののみ色を変えたい。
+                        index: controller.selectedIndex.value,
+                        selectedIndex: controller.selectedIndex.value,
+                        memo: memoItem,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             Expanded(

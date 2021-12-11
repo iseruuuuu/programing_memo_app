@@ -1,6 +1,6 @@
 import '../../memo/memo.dart';
-import '../add/add_screen.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreenController extends GetxController {
   final memos = <Memo>[].obs;
@@ -31,7 +31,19 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapAddMemo() {
+    DateTime now = DateTime.now();
+    DateFormat outputFormat = DateFormat('MM/dd');
+    String date = outputFormat.format(now);
 
+    final todo = Memo(
+      appName: 'アプリ名',
+      languageName: '',
+      linkUrlName: ' ',
+      designUrlName: ' ',
+      memo: '',
+      day: date,
+    );
+    memos.add(todo);
   }
 
   // 指定タスクを削除

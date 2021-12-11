@@ -27,9 +27,12 @@ class HomeScreen extends StatelessWidget {
                 itemCount: memos.length,
                 itemBuilder: (BuildContext context, int index) {
                   final memoItem = memos[index];
-                  return ListItem(
-                    index: index,
-                    memo: memoItem,
+                  return GestureDetector(
+                    onTap: () =>  controller.onTap(index),
+                    child: ListItem(
+                      index: index,
+                      memo: memoItem,
+                    ),
                   );
                 },
               ),

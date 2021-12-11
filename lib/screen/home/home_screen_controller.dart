@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class HomeScreenController extends GetxController {
   final memos = <Memo>[].obs;
+  final selectedIndex = 0.obs;
 
   @override
   void onInit() {
@@ -34,12 +35,10 @@ class HomeScreenController extends GetxController {
     memos.remove(memo); // 等価性overrideしたのでOK
   }
 
-  // // 完了タスクを一括削除
-  // void deleteDone() {
-  //   memos.removeWhere((e) => e.done == true);
-  // }
+  void onTap(int index) {
+    print(index);
+    selectedIndex.value = index;
+    print(selectedIndex.value);
+  }
 
-  // void onTap() {
-  //   Get.to(() => const AddScreen());
-  // }
 }

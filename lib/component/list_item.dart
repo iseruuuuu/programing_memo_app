@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../memo/memo.dart';
 
 class ListItem extends StatelessWidget {
@@ -32,7 +31,6 @@ class ListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                //title,
                 memo.appName,
                 textAlign: TextAlign.start,
                 style: const TextStyle(
@@ -53,7 +51,6 @@ class ListItem extends StatelessWidget {
                   const SizedBox(width: 8),
                   Text(
                     memo.appName,
-                    //content,
                     maxLines: 15,
                     style: const TextStyle(
                       color: Colors.grey,

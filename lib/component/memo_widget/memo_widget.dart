@@ -8,14 +8,14 @@ import 'memo_widget_controller.dart';
 
 class MemoWidget extends StatelessWidget {
   const MemoWidget({
-    Key key,
-    this.memo,
-    this.controller,
-    this.onTap,
+    Key? key,
+    required this.memo,
+    //required this.controller,
+    required this.onTap,
   }) : super(key: key);
 
   final Memo memo;
-  final TextEditingController controller;
+  //final TextEditingController controller;
   final Function() onTap;
 
   @override

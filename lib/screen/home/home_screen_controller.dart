@@ -7,43 +7,38 @@ import '../../memo/memo.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../preference/storage_service/storeage_service.dart';
+
 class HomeScreenController extends GetxController {
-  final memos = <Memo>[].obs;
   final selectedIndex = 0.obs;
 
-  final preference = Preference();
-  var memo = <Memo>[].obs;
+  final memos = <Memo>[].obs;
+  final _storage = TodoStorage();
+  late final Worker _worker;
 
   @override
   void onInit() {
     super.onInit();
+    final storageTodos =
+        _storage.load()?.map((json) => Memo.fromJson(json)).toList();
+    // SharedPreferencesにデータがなければダミー初期データをロード
+    final initialTodos = storageTodos ?? Memo.initialTodos;
+    _memos.addAll(initialTodos);
 
-
-    //final storageMemo = preference.load(PreferenceKey.memomemo).map((json) => Memo.fromJson(json))?.toList();
-    //final initialTodos = storageMemo ?? Memo.initialTodos;
-
-    final storageMemo = preference.load(PreferenceKey.memomemo);
-
-    //memo = storageMemo.map;
-
-    memos.addAll(Memo.initialTodos);
+    // _todosに変化がある度にストレージに保存
+    _worker = ever<List<Memo>>(memos, (todos) {
+      final data = todos.map((e) => e.toJson()).toList();
+      _storage.save(data);
+    });
   }
 
   @override
   void onClose() {
-
+    _worker.dispose();
     super.onClose();
   }
 
   List<Memo> get _memos => memos;
-
-  Memo getTodoById(String id) {
-    try {
-      return memos.singleWhere((e) => e.id == id);
-    } on StateError {
-      return null; // 該当IDがなければnullを返す
-    }
-  }
 
   void onTapAddMemo() {
     DateTime now = DateTime.now();

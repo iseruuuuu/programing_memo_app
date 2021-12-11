@@ -7,11 +7,11 @@ import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
-    Key key,
-    this.memo,
+    Key? key,
+   // this.memo,
   }) : super(key: key);
 
-  final Memo memo;
+  //final Memo memo;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +57,7 @@ class HomeScreen extends StatelessWidget {
               child: Obx(
                 () => MemoWidget(
                   memo: memos[controller.selectedIndex.value],
+                  onTap: () {},
                 ),
               ),
             ),

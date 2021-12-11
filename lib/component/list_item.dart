@@ -3,10 +3,10 @@ import '../memo/memo.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({
-    Key key,
-    this.index,
-    this.memo,
-    this.selectedIndex,
+    Key? key,
+    required this.index,
+    required this.memo,
+    required this.selectedIndex,
   }) : super(key: key);
 
   final int index;
@@ -34,9 +34,7 @@ class ListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                (memo.languageName == '' )
-                    ? '新規メモ'
-                    : memo.appName,
+                (memo.languageName == '') ? '新規メモ' : memo.appName,
                 textAlign: TextAlign.start,
                 style: const TextStyle(
                   fontSize: 15,
@@ -55,9 +53,7 @@ class ListItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    (memo.languageName == '')
-                        ? '追加テキストなし'
-                        : memo.languageName,
+                    (memo.languageName == '') ? '追加テキストなし' : memo.languageName,
                     maxLines: 15,
                     style: const TextStyle(
                       color: Colors.grey,

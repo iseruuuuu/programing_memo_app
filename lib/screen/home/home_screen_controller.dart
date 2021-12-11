@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:programming_note_app/preference/preference.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../memo/memo.dart';
@@ -8,11 +11,28 @@ class HomeScreenController extends GetxController {
   final memos = <Memo>[].obs;
   final selectedIndex = 0.obs;
 
+  final preference = Preference();
+  var memo = <Memo>[].obs;
+
   @override
   void onInit() {
     super.onInit();
 
+
+    //final storageMemo = preference.load(PreferenceKey.memomemo).map((json) => Memo.fromJson(json))?.toList();
+    //final initialTodos = storageMemo ?? Memo.initialTodos;
+
+    final storageMemo = preference.load(PreferenceKey.memomemo);
+
+    //memo = storageMemo.map;
+
     memos.addAll(Memo.initialTodos);
+  }
+
+  @override
+  void onClose() {
+
+    super.onClose();
   }
 
   List<Memo> get _memos => memos;

@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   final memoItem = memos[index];
                   return GestureDetector(
-                    onTap: () =>  controller.onTap(index),
+                    onTap: () => controller.onTap(index),
                     child: ListItem(
                       index: index,
                       memo: memoItem,
@@ -39,8 +39,10 @@ class HomeScreen extends StatelessWidget {
             ),
             Expanded(
               flex: 3,
-              child: MemoWidget(
-                memo: memos[0],
+              child: Obx(
+                () => MemoWidget(
+                  memo: memos[controller.selectedIndex.value],
+                ),
               ),
             ),
           ],

@@ -36,7 +36,7 @@ class HomeScreenController extends GetxController {
     String date = outputFormat.format(now);
 
     final todo = Memo(
-      appName: 'アプリ名',
+      appName: 'アプリメモ',
       languageName: '',
       linkUrlName: ' ',
       designUrlName: ' ',

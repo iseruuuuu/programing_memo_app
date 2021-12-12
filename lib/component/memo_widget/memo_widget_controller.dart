@@ -17,7 +17,7 @@ class MemoWidgetController extends GetxController {
   void onInit() {
     super.onInit();
 
-    textController.text == 'ああ';
+    //textController.text == 'ああ';
 
     print(index);
   }

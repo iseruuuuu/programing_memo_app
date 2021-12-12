@@ -26,7 +26,8 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed:() =>  controller.remove(memos[controller.selectedIndex.value]),
+            onPressed: () =>
+                controller.remove(memos[controller.selectedIndex.value]),
             icon: const Icon(
               Icons.delete,
               color: Colors.black,
@@ -40,32 +41,37 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Obx(
-                () => ListView.builder(
-                  controller: ScrollController(),
-                  itemCount: memos.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final memoItem = memos[index];
-                    return GestureDetector(
-                      onTap: () => controller.onTap(index, memoItem),
-                      child: ListItem(
-                        //TODO 押したもののみ色を変えたい。
-                        index: controller.selectedIndex.value,
-                        selectedIndex: controller.selectedIndex.value,
-                        memo: memoItem,
-                      ),
-                    );
-                  },
-                ),
+                () => controller.memos.isNotEmpty
+                    ? ListView.builder(
+                        controller: ScrollController(),
+                        itemCount: memos.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final memoItem = memos[index];
+                          return GestureDetector(
+                            onTap: () => controller.onTap(index, memoItem),
+                            child: ListItem(
+                              //TODO 押したもののみ色を変えたい。
+                              index: controller.selectedIndex.value,
+                              selectedIndex: controller.selectedIndex.value,
+                              memo: memoItem,
+                            ),
+                          );
+                        },
+                      )
+                    //TODO 空だった時の画面を追加する必要あり。
+                    : Container(),
               ),
             ),
             Expanded(
               flex: 3,
               child: Obx(
-                () => MemoWidget(
-                  memo: memos[controller.selectedIndex.value],
-                  index: controller.selectedIndex.value,
-                  onTap: () {},
-                ),
+                () => controller.memos.isNotEmpty
+                    ? MemoWidget(
+                        memo: memos[controller.selectedIndex.value],
+                        index: controller.selectedIndex.value,
+                        onTap: () {},
+                      )
+                    : Container(),
               ),
             ),
           ],

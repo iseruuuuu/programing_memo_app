@@ -34,8 +34,8 @@ class MemoWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
-              //controller: TextEditingController(text: memo.appName),
-              controller: controller.textController,
+              controller: TextEditingController(text: memo.appName),
+              //controller: controller.textController,
               //TODO 変更した時にリストとかも変わるようにする。
               onChanged: (text) => controller.onChanged(word: text, memo: memo, indexs: index),
               autofocus: true,

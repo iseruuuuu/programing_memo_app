@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/app_title.dart';
 import 'package:get/get.dart';
-
 import '../../memo/memo.dart';
 import 'memo_widget_controller.dart';
 
@@ -40,9 +39,9 @@ class MemoWidget extends StatelessWidget {
               //TODO 変更した時にリストとかも変わるようにする。
               onChanged: (text) => controller.onChanged(word: text, memo: memo, indexs: index),
               autofocus: true,
-              maxLines: null, // 行数に制限なし
+              maxLines: 1, // 行数に制限なし
               decoration: const InputDecoration(
-                hintText: 'タスク入力',
+                hintText: 'アプリ名入力',
               ),
             ),
           ),
@@ -56,6 +55,11 @@ class MemoWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.languageName),
+              autofocus: true,
+              maxLines: 1, // 行数に制限なし
+              decoration: const InputDecoration(
+                hintText: '開発言語入力',
+              ),
             ),
           ),
           Row(
@@ -76,6 +80,11 @@ class MemoWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.designUrlName),
+              autofocus: true,
+              maxLines: 1, // 行数に制限なし
+              decoration: const InputDecoration(
+                hintText: 'デザインURL入力',
+              ),
             ),
           ),
           Row(
@@ -96,6 +105,11 @@ class MemoWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.linkUrlName),
+              autofocus: true,
+              maxLines: 1, // 行数に制限なし
+              decoration: const InputDecoration(
+                hintText: 'URL入力',
+              ),
             ),
           ),
           const Padding(

@@ -63,6 +63,7 @@ class HomeScreen extends StatelessWidget {
               child: Obx(
                 () => MemoWidget(
                   memo: memos[controller.selectedIndex.value],
+                  index: controller.selectedIndex.value,
                   onTap: () {},
                 ),
               ),

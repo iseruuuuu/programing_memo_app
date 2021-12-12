@@ -10,14 +10,16 @@ class MemoWidget extends StatelessWidget {
     Key? key,
     required this.memo,
     required this.onTap,
+    required this.index,
   }) : super(key: key);
 
   final Memo memo;
   final Function() onTap;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MemoWidgetController(), tag: '');
+    final controller = Get.put(MemoWidgetController(index: index), tag: '');
     return SingleChildScrollView(
       controller: ScrollController(),
       child: Column(
@@ -33,9 +35,15 @@ class MemoWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
-              controller: TextEditingController(text: memo.appName),
+              //controller: TextEditingController(text: memo.appName),
+              controller: controller.textController,
               //TODO 変更した時にリストとかも変わるようにする。
-              onChanged: (text) => controller.onChanged(word: text, memo: memo),
+              onChanged: (text) => controller.onChanged(word: text, memo: memo, indexs: index),
+              autofocus: true,
+              maxLines: null, // 行数に制限なし
+              decoration: const InputDecoration(
+                hintText: 'タスク入力',
+              ),
             ),
           ),
           const Padding(
@@ -59,7 +67,7 @@ class MemoWidget extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () => controller.onTapLink(memo.linkUrlName),
+                onPressed: () => controller.onTapLink(memo.designUrlName),
                 child: const Text('リンク'),
               ),
             ],

@@ -25,6 +25,8 @@ class HomeScreenController extends GetxController {
     });
 
 
+    //サンプルを入れてみる。
+    _memos.addAll(Memo.initialTodos);
   }
 
   @override

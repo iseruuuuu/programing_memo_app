@@ -36,7 +36,7 @@ class Memo {
       appName: 'アプリメモ',
       languageName: '開発言語',
       designUrlName: 'https://www.figma.com/file/eMIR6ZMPXwzSHVICJyxMYj/Untitled?node-id=101%3A2',
-      linkUrlName: 'リンクURL',
+      linkUrlName: 'https://zenn.dev/inari_sushio/articles/5f79af745bfb4a',
       memo: 'メモ',
       day: '11/11',
     ),

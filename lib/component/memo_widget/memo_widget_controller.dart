@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../memo/memo.dart';
@@ -15,7 +16,18 @@ class MemoWidgetController extends GetxController {
     //TODO 記入後の状態変化ができていない。
     print(url);
 
-    if (!await launch(url)) throw 'Could not launch $url';
+    if (url.isEmpty) {
+      var i =
+          'https://www.figma.com/file/eMIR6ZMPXwzSHVICJyxMYj/Untitled?node-id=101%3A2';
+      await launch(i);
+    } else {
+      Get.snackbar(
+        "リンクが開けませんでした",
+        "正しいURLを入力してください!!",
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.white,
+      );
+    }
   }
 
   void onChanged({required String word, required Memo memo}) {
@@ -28,9 +40,8 @@ class MemoWidgetController extends GetxController {
       designUrlName: memo.designUrlName,
       linkUrlName: memo.linkUrlName,
       memo: memo.memo,
-      day: memo.day
+      day: memo.day,
     );
     memos.setAll(index, [newMemo]);
   }
-
 }

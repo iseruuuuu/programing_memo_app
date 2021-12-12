@@ -41,6 +41,7 @@ class HomeScreen extends StatelessWidget {
               flex: 1,
               child: Obx(
                 () => ListView.builder(
+                  controller: ScrollController(),
                   itemCount: memos.length,
                   itemBuilder: (BuildContext context, int index) {
                     final memoItem = memos[index];

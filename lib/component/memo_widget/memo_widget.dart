@@ -19,6 +19,7 @@ class MemoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(MemoWidgetController(), tag: '');
     return SingleChildScrollView(
+      controller: ScrollController(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

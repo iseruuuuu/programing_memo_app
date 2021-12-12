@@ -71,6 +71,7 @@ class HomeScreen extends StatelessWidget {
                         index: controller.selectedIndex.value,
                         onTap: () {},
                       )
+                    //TODO 空だった時の画面を追加する必要あり。
                     : Container(),
               ),
             ),

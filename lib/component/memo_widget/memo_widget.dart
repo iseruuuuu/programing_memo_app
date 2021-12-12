@@ -23,22 +23,25 @@ class MemoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          const AppTitle(
-            title: 'アプリ名',
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: AppTitle(
+              title: 'アプリ名',
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.appName),
-              onChanged: (text) {
-                //TODO 変更した時にリストとかも変わるようにする。
-                memo.appName == text;
-                print(text);
-              },
+              //TODO 変更した時にリストとかも変わるようにする。
+              onChanged: (text) => controller.onChanged(word: text, memo: memo),
             ),
           ),
-          const AppTitle(
-            title: '開発言語',
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: AppTitle(
+              title: '開発言語',
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
@@ -49,7 +52,7 @@ class MemoWidget extends StatelessWidget {
           Row(
             children: [
               const Padding(
-                padding: EdgeInsets.only(right: 50),
+                padding: EdgeInsets.only(right: 50, left: 25),
                 child: AppTitle(
                   title: 'デザインURL',
                 ),
@@ -69,7 +72,7 @@ class MemoWidget extends StatelessWidget {
           Row(
             children: [
               const Padding(
-                padding: EdgeInsets.only(right: 50),
+                padding: EdgeInsets.only(right: 50, left: 25),
                 child: AppTitle(
                   title: '参考にしたサイト',
                 ),
@@ -86,8 +89,11 @@ class MemoWidget extends StatelessWidget {
               controller: TextEditingController(text: memo.linkUrlName),
             ),
           ),
-          const AppTitle(
-            title: 'メモ',
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: AppTitle(
+              title: 'メモ',
+            ),
           ),
           //TODO MarkDownにしておきたい!!
           Padding(

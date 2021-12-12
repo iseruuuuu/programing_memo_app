@@ -23,6 +23,8 @@ class HomeScreenController extends GetxController {
       final data = memos.map((e) => e.toJson()).toList();
       _storage.save(data);
     });
+
+
   }
 
   @override
@@ -49,12 +51,21 @@ class HomeScreenController extends GetxController {
     memos.add(memo);
   }
 
+
+
   //TODO backキーを打ったら消せるようにする。
   void remove(Memo memo) {
     memos.remove(memo);
   }
 
-  void onTap(int index) {
+  void deleteDone() {
+    // memos.removeWhere((e) => e.id == true);
+  }
+
+  void onTap(int index, Memo memo) {
+
+    print(index);
     selectedIndex.value = index;
+    print(selectedIndex);
   }
 }

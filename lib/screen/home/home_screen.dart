@@ -15,16 +15,24 @@ class HomeScreen extends StatelessWidget {
     final memos = controller.memos;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.drive_file_rename_outline,
             color: Colors.black,
           ),
-          //TODO メモを追加できるようにしたい。
           onPressed: controller.onTapAddMemo,
         ),
+        actions: [
+          IconButton(
+            onPressed:() =>  controller.remove(memos[controller.selectedIndex.value]),
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: Row(
@@ -37,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final memoItem = memos[index];
                     return GestureDetector(
-                      onTap: () => controller.onTap(index),
+                      onTap: () => controller.onTap(index, memoItem),
                       child: ListItem(
                         //TODO 押したもののみ色を変えたい。
                         index: controller.selectedIndex.value,

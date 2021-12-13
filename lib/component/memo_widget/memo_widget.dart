@@ -41,7 +41,7 @@ class MemoWidget extends StatelessWidget {
               autofocus: true,
               maxLines: 1, // 行数に制限なし
               decoration: const InputDecoration(
-                hintText: 'アプリ名入力',
+                hintText: 'アプリ名を入力',
               ),
             ),
           ),
@@ -58,7 +58,7 @@ class MemoWidget extends StatelessWidget {
               autofocus: true,
               maxLines: 1, // 行数に制限なし
               decoration: const InputDecoration(
-                hintText: '開発言語入力',
+                hintText: '開発言語を入力',
               ),
             ),
           ),
@@ -106,7 +106,7 @@ class MemoWidget extends StatelessWidget {
             child: TextField(
               controller: TextEditingController(text: memo.linkUrlName),
               autofocus: true,
-              maxLines: 1, // 行数に制限なし
+              maxLines: 1,
               decoration: const InputDecoration(
                 hintText: 'URL入力',
               ),

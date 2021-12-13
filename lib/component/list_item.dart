@@ -7,11 +7,13 @@ class ListItem extends StatelessWidget {
     required this.index,
     required this.memo,
     required this.selectedIndex,
+    required this.color,
   }) : super(key: key);
 
   final int index;
   final Memo memo;
   final int selectedIndex;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,10 @@ class ListItem extends StatelessWidget {
             color: const Color(0xFFFFFFFF),
             width: 2,
           ),
-          color: (index == selectedIndex)
-              ? const Color(0xFFFFE080)
-              : const Color(0xFFFFFFFF),
+          color: color,
+          // color: (index == selectedIndex)
+          //     ? const Color(0xFFFFE080)
+          //     : const Color(0xFFFFFFFF),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
@@ -36,6 +39,7 @@ class ListItem extends StatelessWidget {
               Text(
                 (memo.languageName == '')
                     ? '新規メモ'
+                    //? '$index'
                     : memo.appName,
                 textAlign: TextAlign.start,
                 style: const TextStyle(
@@ -55,9 +59,7 @@ class ListItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    (memo.languageName == '')
-                        ? '追加テキストなし'
-                        : memo.languageName,
+                    (memo.languageName == '') ? '追加テキストなし' : memo.languageName,
                     maxLines: 15,
                     style: const TextStyle(
                       color: Colors.grey,

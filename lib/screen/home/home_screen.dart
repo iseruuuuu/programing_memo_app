@@ -14,9 +14,10 @@ class HomeScreen extends StatelessWidget {
     final controller = Get.put(HomeScreenController(), tag: '');
     final memos = controller.memos;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 1,
         leading: IconButton(
           icon: const Icon(
             Icons.drive_file_rename_outline,
@@ -49,17 +50,28 @@ class HomeScreen extends StatelessWidget {
                           final memoItem = memos[index];
                           return GestureDetector(
                             onTap: () => controller.onTap(index, memoItem),
-                            child: ListItem(
-                              //TODO 押したもののみ色を変えたい。
-                              index: controller.selectedIndex.value,
-                              selectedIndex: controller.selectedIndex.value,
-                              memo: memoItem,
+                            child: Obx(
+                              () => ListItem(
+                                //TODO 押したもののみ色を変えたい。
+                                //index: controller.selectedIndex.value,
+                                index: index,
+                                selectedIndex: controller.selectedIndex.value,
+                                memo: memoItem,
+                                color: controller.colors.value,
+                              ),
                             ),
                           );
                         },
                       )
                     //TODO 空だった時の画面を追加する必要あり。
                     : Container(),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: VerticalDivider(
+                color: Colors.grey.shade300,
+                width: 1,
               ),
             ),
             Expanded(

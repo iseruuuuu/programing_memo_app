@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../memo/memo.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -6,22 +8,23 @@ import '../../preference/storage_service/storeage_service.dart';
 class HomeScreenController extends GetxController {
   final selectedIndex = 0.obs;
   final memos = <Memo>[].obs;
-  final _storage = TodoStorage();
-  late final Worker _worker;
+  final storage = TodoStorage();
+  late final Worker worker;
+  final colors = Colors.grey.obs;
 
   @override
   void onInit() {
     super.onInit();
     final storageMemos =
-        _storage.load()?.map((json) => Memo.fromJson(json)).toList();
+        storage.load()?.map((json) => Memo.fromJson(json)).toList();
     // SharedPreferencesにデータがなければダミー初期データをロード
     final initialMemos = storageMemos ?? Memo.initialTodos;
     _memos.addAll(initialMemos);
 
     // _todosに変化がある度にストレージに保存
-    _worker = ever<List<Memo>>(memos, (memos) {
+    worker = ever<List<Memo>>(memos, (memos) {
       final data = memos.map((e) => e.toJson()).toList();
-      _storage.save(data);
+      storage.save(data);
     });
 
 
@@ -31,7 +34,7 @@ class HomeScreenController extends GetxController {
 
   @override
   void onClose() {
-    _worker.dispose();
+    worker.dispose();
     super.onClose();
   }
 
@@ -45,8 +48,8 @@ class HomeScreenController extends GetxController {
     final memo = Memo(
       appName: '',
       languageName: '',
-      linkUrlName: ' ',
-      designUrlName: ' ',
+      linkUrlName: '',
+      designUrlName: '',
       memo: '',
       day: date,
     );
@@ -65,9 +68,11 @@ class HomeScreenController extends GetxController {
   }
 
   void onTap(int index, Memo memo) {
-
     print(index);
     selectedIndex.value = index;
     print(selectedIndex);
+    colors.value = Colors.amber;
+
+    print(colors.value);
   }
 }

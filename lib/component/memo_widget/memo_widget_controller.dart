@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../memo/memo.dart';
 import 'package:get/get.dart';
+import '../../preference/storage_service/storeage_service.dart';
+import '../../screen/home/home_screen_controller.dart';
 
 class MemoWidgetController extends GetxController {
   final memos = <Memo>[].obs;
   final textController = TextEditingController();
   final int index;
+  final controller = Get.put(HomeScreenController());
+
 
   MemoWidgetController({
     required this.index,
@@ -20,6 +23,14 @@ class MemoWidgetController extends GetxController {
     //textController.text == 'ああ';
 
     print(index);
+
+    // // _todosに変化がある度にストレージに保存
+    // controller.worker = ever<List<Memo>>(memos, (memos) {
+    //   final data = memos.map((e) => e.toJson()).toList();
+    //   //_storage.save(data);
+    //   controller.storage.save(data);
+    // });
+
   }
 
   void onTapLink(String url) async {
@@ -42,17 +53,30 @@ class MemoWidgetController extends GetxController {
     //print(word);
 
     final index = memos.indexOf(memo);
+    print(index);
     memo.appName == word;
 
-    final newMemo = memo.copyWith(
-      id: memo.id,
+    // final newMemo = memo.copyWith(
+    //   id: memo.id,
+    //   appName: word,
+    //   languageName: memo.languageName,
+    //   designUrlName: memo.designUrlName,
+    //   linkUrlName: memo.linkUrlName,
+    //   memo: memo.memo,
+    //   day: memo.day,
+    // );
+    final newMemos = memo.copyWith(
       appName: word,
-      languageName: memo.languageName,
-      designUrlName: memo.designUrlName,
-      linkUrlName: memo.linkUrlName,
-      memo: memo.memo,
-      day: memo.day,
     );
+    memos.setAll(index,[newMemos]);
+
+
+
+    // controller.worker = ever<List<Memo>>(memos, (memos) {
+    //   final data = memos.map((e) => e.toJson()).toList();
+    //   //_storage.save(data);
+    //   controller.storage.save(data);
+    // });
 
     // void updateText(String description, Todo todo) {
     //   final index = _todos.indexOf(todo);

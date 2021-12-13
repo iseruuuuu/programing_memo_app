@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Obx(
                 () => controller.memos.isNotEmpty
                     ? ListView.builder(
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 3,
+              flex: 5,
               child: Obx(
                 () => controller.memos.isNotEmpty
                     ? MemoWidget(

@@ -40,29 +40,26 @@ class ListItem extends StatelessWidget {
                 memo.day,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 15,
                   color: Color(0xFF2E2817),
                 ),
               ),
               Text(
-                (memo.languageName == '')
-                    ? '新規メモ'
-                    //? '$index'
-                    : memo.appName,
+                (memo.appName == '') ? '新規メモ' : memo.appName,
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  fontSize: 15,
+                  fontSize: 20,
                   color: Color(0xFF2E2817),
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                (memo.languageName == '') ? '追加テキストなし' : memo.languageName,
+                (memo.languageName == '') ? '' : memo.languageName,
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  color: Colors.grey,
+                  color: Colors.black,
                   fontSize: 13,
                 ),
               ),

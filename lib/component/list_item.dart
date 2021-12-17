@@ -37,36 +37,34 @@ class ListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
+                memo.day,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Color(0xFF2E2817),
+                ),
+              ),
+              Text(
                 (memo.languageName == '')
                     ? '新規メモ'
                     //? '$index'
                     : memo.appName,
                 textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 15,
                   color: Color(0xFF2E2817),
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Row(
-                children: [
-                  Text(
-                    memo.day,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      color: Color(0xFF2E2817),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    (memo.languageName == '') ? '追加テキストなし' : memo.languageName,
-                    maxLines: 15,
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
+              Text(
+                (memo.languageName == '') ? '追加テキストなし' : memo.languageName,
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 13,
+                ),
               ),
             ],
           ),

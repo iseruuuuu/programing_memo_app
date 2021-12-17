@@ -12,6 +12,9 @@ class Controller extends GetxController {
   final storage = TodoStorage();
   late final Worker worker;
   final colors = Colors.grey.obs;
+  late FocusNode node;
+  final focused = false.obs;
+  List<bool> selected = List.generate(20, (i) => false);
 
   @override
   void onInit() {
@@ -69,33 +72,16 @@ class Controller extends GetxController {
     colors.value = Colors.amber;
   }
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //
-  //   //textController.text == 'ああ';
-  //
-  //   print(index);
-  //
-  //   // // _todosに変化がある度にストレージに保存
-  //   // controller.worker = ever<List<Memo>>(memos, (memos) {
-  //   //   final data = memos.map((e) => e.toJson()).toList();
-  //   //   //_storage.save(data);
-  //   //   controller.storage.save(data);
-  //   // });
-  //
-  // }
-
   void onTapLink(String url) async {
-    //TODO 記入後の状態変化ができていない。
-    if (url != '') {
+    if (url != "" && await canLaunch(url)) {
       await launch(url);
     } else {
       Get.snackbar(
         "リンクが開けませんでした",
-        "正しいURLを入力してください!!",
+        "正しいURLを入力してください",
         snackPosition: SnackPosition.TOP,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
       );
     }
   }

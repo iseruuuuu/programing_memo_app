@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/list_item.dart';
+import 'package:programming_note_app/component/list_tile.dart';
 import 'package:programming_note_app/component/memo_widget/memo_widget.dart';
 import '../../controller.dart';
 import 'home_screen_controller.dart';
@@ -50,15 +51,29 @@ class HomeScreen extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           final memoItem = memos[index];
                           return GestureDetector(
-                            onTap: () => controller.onTap(index, memoItem),
+                            onTap: () {
+                              controller.onTap(index, memoItem);
+                              // if (controller.focused.value) {
+                              //   print(index);
+                              //   controller.node.unfocus();
+                              // } else {
+                              //   print(index);
+                              //   controller.node.requestFocus();
+                              // }
+                            },
                             child: Obx(
-                              () => ListItem(
-                                //TODO 押したもののみ色を変えたい。
-                                //index: controller.selectedIndex.value,
-                                index: index,
-                                selectedIndex: controller.selectedIndex.value,
-                                memo: memoItem,
-                                color: controller.colors.value,
+                              () => Container(
+                                //color: controller.selected[index] ? Colors.blue : null,
+                                child: ListItem(
+                                  //() => ListTiles(
+                                  //TODO 押したもののみ色を変えたい。
+                                  //index: controller.selectedIndex.value,
+                                  index: index,
+                                  selectedIndex: controller.selectedIndex.value,
+                                  memo: memoItem,
+                                  color: controller.colors.value,
+                                  //select: true,
+                                ),
                               ),
                             ),
                           );

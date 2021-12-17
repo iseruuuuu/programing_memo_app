@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../controller.dart';
 import '../memo/memo.dart';
+import 'package:get/get.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({
@@ -17,6 +19,7 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(Controller(), tag: '');
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
       child: Container(
@@ -25,7 +28,8 @@ class ListItem extends StatelessWidget {
             color: const Color(0xFFFFFFFF),
             width: 2,
           ),
-          color: color,
+          //color: color,
+          color: controller.selected[index] ? Colors.blue : Colors.grey,
           // color: (index == selectedIndex)
           //     ? const Color(0xFFFFE080)
           //     : const Color(0xFFFFFFFF),

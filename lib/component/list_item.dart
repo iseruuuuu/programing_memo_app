@@ -49,7 +49,7 @@ class ListItem extends StatelessWidget {
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: Color(0xFF2E2817),
                   fontWeight: FontWeight.bold,
                 ),

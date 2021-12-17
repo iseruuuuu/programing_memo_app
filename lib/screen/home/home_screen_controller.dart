@@ -21,15 +21,14 @@ class HomeScreenController extends GetxController {
     final initialMemos = storageMemos ?? Memo.initialTodos;
     _memos.addAll(initialMemos);
 
+
     // _todosに変化がある度にストレージに保存
     worker = ever<List<Memo>>(memos, (memos) {
       final data = memos.map((e) => e.toJson()).toList();
       storage.save(data);
     });
-
-
     //サンプルを入れてみる。
-    _memos.addAll(Memo.initialTodos);
+    //_memos.addAll(Memo.initialTodos);
   }
 
   @override
@@ -68,11 +67,7 @@ class HomeScreenController extends GetxController {
   }
 
   void onTap(int index, Memo memo) {
-    print(index);
     selectedIndex.value = index;
-    print(selectedIndex);
     colors.value = Colors.amber;
-
-    print(colors.value);
   }
 }

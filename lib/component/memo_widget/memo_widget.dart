@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/app_title.dart';
 import 'package:get/get.dart';
+import '../../controller.dart';
 import '../../memo/memo.dart';
 import 'memo_widget_controller.dart';
 
@@ -18,7 +19,8 @@ class MemoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MemoWidgetController(index: index), tag: '');
+    //final controller = Get.put(MemoWidgetController(index: index), tag: '');
+    final controller = Get.put(Controller(), tag: '');
     return SingleChildScrollView(
       controller: ScrollController(),
       child: Column(
@@ -55,6 +57,7 @@ class MemoWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.languageName),
+              onChanged: (text) => controller.onChanged2(word: text, memo: memo, indexs: index),
               autofocus: true,
               maxLines: 1, // 行数に制限なし
               decoration: const InputDecoration(
@@ -80,6 +83,7 @@ class MemoWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.designUrlName),
+              onChanged: (text) => controller.onChanged3(word: text, memo: memo, indexs: index),
               autofocus: true,
               maxLines: 1, // 行数に制限なし
               decoration: const InputDecoration(
@@ -105,6 +109,7 @@ class MemoWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
               controller: TextEditingController(text: memo.linkUrlName),
+              onChanged: (text) => controller.onChanged4(word: text, memo: memo, indexs: index),
               autofocus: true,
               maxLines: 1,
               decoration: const InputDecoration(
@@ -129,6 +134,7 @@ class MemoWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: TextField(
                   controller: TextEditingController(text: memo.memo),
+                  onChanged: (text) => controller.onChanged5(word: text, memo: memo, indexs: index),
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                   decoration: const InputDecoration(

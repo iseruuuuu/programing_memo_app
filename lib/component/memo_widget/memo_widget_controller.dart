@@ -68,7 +68,7 @@ class MemoWidgetController extends GetxController {
     final newMemos = memo.copyWith(
       appName: word,
     );
-    memos.setAll(index,[newMemos]);
+    //memos.setAll(index,[newMemos]);
 
 
 

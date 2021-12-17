@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:programming_note_app/component/list_item.dart';
 import 'package:programming_note_app/component/memo_widget/memo_widget.dart';
+import '../../controller.dart';
 import 'home_screen_controller.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeScreenController(), tag: '');
+    final controller = Get.put(Controller(), tag: '');
     final memos = controller.memos;
     return Scaffold(
       backgroundColor: Colors.white,

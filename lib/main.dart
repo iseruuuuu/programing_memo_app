@@ -5,6 +5,8 @@ import 'package:programming_note_app/preference/storage_service/storeage_service
 import 'package:programming_note_app/screen/home/home_screen.dart';
 import 'package:get/get.dart';
 
+import 'a.dart';
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await StorageService.init();
@@ -19,6 +21,7 @@ class App extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(
+      //home: Home12(
       ),
     );
   }

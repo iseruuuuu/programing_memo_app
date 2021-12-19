@@ -36,9 +36,10 @@ class MemoWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
+              //TODO キーボードの動きが全体的に悪いss
               controller: TextEditingController(text: memo.appName),
               onChanged: (text) => controller.onChanged(word: text, memo: memo, indexs: index),
-              autofocus: true,
+              //autofocus: true,
               maxLines: 1, // 行数に制限なし
               decoration: const InputDecoration(
                 hintText: 'アプリ名を入力',

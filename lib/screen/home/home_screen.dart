@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:new_keyboard_shortcuts/keyboard_shortcuts.dart';
 import 'package:programming_note_app/component/list_item.dart';
 import 'package:programming_note_app/component/list_tile.dart';
 import 'package:programming_note_app/component/memo_widget/memo_widget.dart';
@@ -38,72 +40,65 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Obx(
-                () => controller.memos.isNotEmpty
-                    ? ListView.builder(
-                        controller: ScrollController(),
-                        itemCount: memos.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          final memoItem = memos[index];
-                          return GestureDetector(
-                            onTap: () {
-                              controller.onTap(index, memoItem);
-                              // if (controller.focused.value) {
-                              //   print(index);
-                              //   controller.node.unfocus();
-                              // } else {
-                              //   print(index);
-                              //   controller.node.requestFocus();
-                              // }
-                            },
-                            child: Obx(
-                              () => Container(
-                                //color: controller.selected[index] ? Colors.blue : null,
-                                child: ListItem(
-                                  //() => ListTiles(
-                                  //TODO 押したもののみ色を変えたい。
-                                  //index: controller.selectedIndex.value,
+      body: KeyBoardShortcuts(
+        keysToPress: {LogicalKeyboardKey.keyA},
+        onKeysPressed: () {
+          controller.onTapAddMemo();
+        },
+        child: Center(
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Obx(
+                  () => controller.memos.isNotEmpty
+                      ? ListView.builder(
+                          controller: ScrollController(),
+                          itemCount: memos.length,
+                          itemExtent: 70,
+                          itemBuilder: (BuildContext context, int index) {
+                            final memoItem = memos[index];
+                            return GestureDetector(
+                              onTap: () {
+                                controller.onTap(index, memoItem);
+                              },
+                              child: Obx(
+                                () => ListTiles(
                                   index: index,
+                                  indexs: 0,
                                   selectedIndex: controller.selectedIndex.value,
                                   memo: memoItem,
-                                  color: controller.colors.value,
-                                  //select: true,
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      )
-                    //TODO 空だった時の画面を追加する必要あり。
-                    : Container(),
+                            );
+                          },
+                        )
+                      //TODO 空だった時の画面を追加する必要あり。
+                      : Container(),
+                ),
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: VerticalDivider(
-                color: Colors.grey.shade300,
-                width: 1,
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: VerticalDivider(
+                  color: Colors.grey.shade300,
+                  width: 1,
+                ),
               ),
-            ),
-            Expanded(
-              flex: 5,
-              child: Obx(
-                () => controller.memos.isNotEmpty
-                    ? MemoWidget(
-                        memo: memos[controller.selectedIndex.value],
-                        index: controller.selectedIndex.value,
-                        onTap: () {},
-                      )
-                    //TODO 空だった時の画面を追加する必要あり。
-                    : Container(),
+              Expanded(
+                flex: 5,
+                child: Obx(
+                  () => controller.memos.isNotEmpty
+                      ? MemoWidget(
+                          memo: memos[controller.selectedIndex.value],
+                          index: controller.selectedIndex.value,
+                          onTap: () {},
+                        )
+                      //TODO 空だった時の画面を追加する必要あり。
+                      : Container(),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

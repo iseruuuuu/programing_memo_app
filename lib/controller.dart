@@ -15,6 +15,7 @@ class Controller extends GetxController {
   late FocusNode node;
   final focused = false.obs;
   List<bool> selected = List.generate(20, (i) => false);
+  var count = 0;
 
   @override
   void onInit() {
@@ -61,6 +62,8 @@ class Controller extends GetxController {
   //TODO backキーを打ったら消せるようにする。
   void remove(Memo memo) {
     memos.remove(memo);
+    //一つ削除したら、リストの最初にしておく。
+    selectedIndex.value = 0;
   }
 
   void deleteDone() {

@@ -3,7 +3,6 @@ import 'package:programming_note_app/component/app_title.dart';
 import 'package:get/get.dart';
 import '../../controller.dart';
 import '../../memo/memo.dart';
-import 'memo_widget_controller.dart';
 
 class MemoWidget extends StatelessWidget {
   const MemoWidget({
@@ -19,7 +18,6 @@ class MemoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Get.put(MemoWidgetController(index: index), tag: '');
     final controller = Get.put(Controller(), tag: '');
     return SingleChildScrollView(
       controller: ScrollController(),
@@ -36,7 +34,7 @@ class MemoWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 30),
             child: TextField(
-              //TODO キーボードの動きが全体的に悪いss
+              //TODO キーボードの動きが全体的に悪い -> 修正する必要あり
               controller: TextEditingController(text: memo.appName),
               onChanged: (text) => controller.onChanged(word: text, memo: memo, indexs: index),
               //autofocus: true,
